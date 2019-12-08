@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const expressSession = require('express-session');
 const LocalStrategy = require('passport-local').Strategy;
 var sql = require('mssql');
-const keys = require('./mod/key')
+// const keys = require('./mod/key')
 
 // ----------------------------------------------CONFIGURATION------------------------------------
 const PORT = 5000;
