@@ -23,6 +23,10 @@ $('#si-id-click').click(event=>{
     $('#su-id-click').css('color','grey')
 })
 
+$('#LOGO').click(e=>{
+    window.location.href = '/'
+})
+
 function fixFunctionShow(val){
     if(val == -1){
         $('.admin-function').show();
@@ -42,8 +46,9 @@ $(document).ready(
         method: 'POST',
     }).done(result => {
         if (result[0]) {
+            const data = result[0].split(' ');
             $('.control-tool-option').show();
-            $('#ses-user-name').text(result[0])
+            $('#ses-user-name').text(data[data.length-1])
             $('#ses-user-name').show();
             $('#sign-id').remove();
             $('#out-id').show();
@@ -258,4 +263,8 @@ $('#searchBtnID').click(e=>{
 $('#tbl-new-rj-id').on('click','p',function(){
     const text = $(this).attr('id');
     window.open('/recruitment-job/analyst-'+text);
+})
+
+$('#employ-f-id').click(e=>{
+    window.location.href = '/my-recruitment-job-raise'
 })

@@ -57,6 +57,7 @@ header{
 .LOGO{
     width: 7%;
     display: inline-block;
+    cursor: pointer;
 }
 .web-slogan-title{
     border-style: none;
@@ -94,6 +95,8 @@ header{
 }
 #ses-user-name{
     border: none;
+    font-style: oblique;
+    cursor: auto;
 }
 #out-id{
     color: red;
@@ -465,7 +468,7 @@ nav{
     background-color: #ffffff;
     border: solid 2px #f5f5f5;
     width: 100%;
-    font-size: 0.9em;
+    font-size: 0.65em;
     border-spacing: 0px 0px;
 }
 .tbl-new-rj p{
