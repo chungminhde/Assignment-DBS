@@ -6,7 +6,7 @@ const expressSession = require('express-session');
 const LocalStrategy = require('passport-local').Strategy;
 var sql = require('mssql');
 // install library ejs << npm install ejs >>>
-const keys = require('./mod/key')
+// const keys = require('./mod/key')
 
 // ----------------------------------------------CONFIGURATION------------------------------------
 const PORT = 5000 || process.env.PORT;
