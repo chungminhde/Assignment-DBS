@@ -11,7 +11,7 @@ var sql = require('mssql');
 // ----------------------------------------------CONFIGURATION------------------------------------
 const PORT = 5000 || process.env.PORT;
 app.listen(PORT, () => {
-  console.log("https://localhost:" + PORT)
+  console.log("http://localhost:" + PORT)
 })
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('./src'))
