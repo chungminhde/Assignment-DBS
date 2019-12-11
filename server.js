@@ -6,12 +6,12 @@ const expressSession = require('express-session');
 const LocalStrategy = require('passport-local').Strategy;
 var sql = require('mssql');
 // install library ejs << npm install ejs >>>
-// const keys = require('./mod/key')
+const keys = require('./mod/key')
 
 // ----------------------------------------------CONFIGURATION------------------------------------
 const PORT = 5000 || process.env.PORT;
 app.listen(PORT, () => {
-  console.log("http://localhost:" + PORT)
+  console.log("https://localhost:" + PORT)
 })
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('./src'))
@@ -148,6 +148,20 @@ app.post('/create-new-account/confirm', (req, res, next) => {
       )
       `, (err, result) => {
     if (err) console.log(err);
+    else{
+      if (req.body.AType == 1){
+        request.query(`
+        INSERT INTO dbo.Employer VALUES( (SELECT IDENT_CURRENT('Account')),'${req.body.username}','NULL','NULL',1)
+        `)
+      }
+      else{
+        request.query(`
+        INSERT INTO dbo.Candidate
+        VALUES ((SELECT IDENT_CURRENT('Account')), '${req.body.username}', 'default', '00000000000', '@', '1-1-2000', '000000000' , 0, '');
+        `)
+      }
+      res.send(true)
+    }
   })
 
   request.pause();
@@ -208,45 +222,6 @@ app.get('/recruitment-job/analyst-:id', (req, res) => {
   })
 })
 
-
-app.post('/url-test-here', (req, res, next) => {
-  if (req.isAuthenticated()) {
-    // console.log() là in ra thôi.
-    // Data trên session được lấy bằng cách dưới đây.
-    console.log(req.user.username)
-    console.log(req.user.password)
-    console.log(req.user.AID)
-    console.log(req.user.AType)
-    // Data được gửi từ front-end được lấy bằng cách dưới đây.
-    console.log(req.body.name)
-    // Bắt đầu query với sqlserver như này
-    request.resume();
-    request.query(`Select * from dbo.Account WHERE AID = ${req.user.AID} `, (err, result) => {
-      if (err) console.log(err)
-      else {
-        console.log(result.recordset[0])
-        res.send({ bool: true, str: 'OK' })
-      }
-    })
-    request.pause();
-  }
-  else {
-    res.redirect('/')
-  }
-})
-
-app.get('/test', (req, res) => {
-  if (req.isAuthenticated()) {
-    // 
-    console.log(req.user.username)
-    console.log(req.user.password)
-    console.log(req.user.AID)
-    console.log(req.user.AType)
-  }
-  else {
-    res.redirect('/')
-  }
-})
 
 app.post('/get-peer/recruitment', (req, res, next) => {
   request.resume();
