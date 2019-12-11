@@ -100,3 +100,12 @@ ALTER TABLE Curriculum_Vitae ADD CONSTRAINT fk_CV_Candidate_ID FOREIGN KEY (CV_C
 
 -- Blog Foreign to Candidate, REMOVE Candidate => SET DEFAULT Blog Author
 ALTER TABLE Blog ADD CONSTRAINT fk_Blog_Author_ID FOREIGN KEY (B_AuthorID) REFERENCES Candidate (CID) ON DELETE SET DEFAULT						-- (3)** DONE.
+
+--Create INDEX for table
+CREATE INDEX indexAccount ON dbo.Account(username)
+CREATE INDEX indexBlog ON dbo.Blog(BID)
+CREATE INDEX indexBusiness_type ON dbo.Business_type(EC_ID)
+CREATE INDEX indexCandidate ON dbo.Candidate(CID)
+CREATE INDEX indexCurriculum_Vitae ON dbo.Curriculum_Vitae(CVC_ThisID)
+CREATE INDEX indexEmployer ON dbo.Employer(EID)
+CREATE INDEX indexRecruitment_Job ON dbo.Recruitment_Job(JID)
