@@ -283,10 +283,10 @@ $('#bsn-type-id').click(e=>{
 
 // URL truy cập MY Blog của candidate <<Huy>>
 $('#bsn-type-id').click(e=>{
-    window.location.href = "/business-type-show"
+    window.location.href = "/my-blog-raise"
 })
 
 // URL truy cập MY CV của candidate <<Dệ>>
 $('#bsn-type-id').click(e=>{
-    window.location.href = "/business-type-show"
+    window.location.href = "/my-cv-raise"
 })
