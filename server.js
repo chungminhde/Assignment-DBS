@@ -194,10 +194,10 @@ app.post('/get-goe-salary/confirm', (req, res) => {
   request.pause();
 })
 
-app.get('/recruitment-job/analyst-:id', (req, res) => {
+app.get('/recruitment-job/analyst-', (req, res) => {
   var Obj = {};
   request.resume();
-  request.query(`Select * from Recruitment_Job WHERE JID = '${req.params.id}'`, (err, result) => {
+  request.query(`Select * from Recruitment_Job WHERE JID = '${req.query.id}'`, (err, result) => {
     if (err) { console.log(err) }
     else {
       Obj.b = result.recordset[0].JName;
@@ -303,5 +303,19 @@ app.post('/request-delete-recruit/confirm', (req,res,next)=>{
     }
   })
   request.pause();
+})
+
+app.post('/get-sch-account/post-confirm', (req,res,next)=>{
+  if (req.isAuthenticated()){
+    if (req.user.AType == 1){
+      res.send(false)
+    }
+    else{
+      res.send(true)
+    }
+  }
+  else{
+    res.send(false)
+  }
 })
 // -------------------------------------------------HẾT CỦA LONG---------------------------------------------------------------
