@@ -318,4 +318,19 @@ app.post('/get-sch-account/post-confirm', (req,res,next)=>{
     res.send(false)
   }
 })
+
+app.get('/my-profile-ser',(req,res,next)=>{
+  if(req.isAuthenticated()){
+    if(req.user.AType == 1){
+      res.render('employer-my-prof')
+    }
+    else{
+      res.render('candidate-profile')
+    }
+  }
+  else{
+    res.redirect('/')
+  }
+})
+
 // -------------------------------------------------HẾT CỦA LONG---------------------------------------------------------------
