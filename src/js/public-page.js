@@ -1,3 +1,4 @@
+// LONG
 $('#sign-id').click((e)=>{
     $('.Sign-tabs').show();
     $('.watermark-fullscreen').show();
@@ -262,7 +263,7 @@ $('#searchBtnID').click(e=>{
 
 $('#tbl-new-rj-id').on('click','p',function(){
     const text = $(this).attr('id');
-    window.open('/recruitment-job/analyst-'+text);
+    window.open('/recruitment-job/analyst-?id='+text);
 })
 
 
