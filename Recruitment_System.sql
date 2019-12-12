@@ -1,4 +1,3 @@
-
 USE master ;
 DROP DATABASE R_System
 GO
@@ -109,3 +108,6 @@ CREATE INDEX indexCandidate ON dbo.Candidate(CID)
 CREATE INDEX indexCurriculum_Vitae ON dbo.Curriculum_Vitae(CVC_ThisID)
 CREATE INDEX indexEmployer ON dbo.Employer(EID)
 CREATE INDEX indexRecruitment_Job ON dbo.Recruitment_Job(JID)
+
+INSERT INTO dbo.Account VALUES('admin@stb.com','admin',-1)
+INSERT INTO dbo.Business_type VALUES('default','default')
